@@ -20,6 +20,12 @@ jobs:
         with:
           go-version: 1.16
 
+      - name: Check file existence
+        id: check_files
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "/home/runner/.local/bin/protoc"
+
       - name: Install protobuf
         run: |
           curl -LO https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/protoc-3.13.0-linux-x86_64.zip
