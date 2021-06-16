@@ -35,6 +35,15 @@ jobs:
           go get -u github.com/yoheimuta/protolint/cmd/protolint
           export PATH="$PATH:$(go env GOPATH)/bin"
 
+      - name: Generate Go module types
+        run: task build_go_types
+
+      - name: Check go module
+        run: git diff --exit-code
+
       - name: Lint protos
         working-directory: protos
         run: protolint lint .
+
+      
+      
